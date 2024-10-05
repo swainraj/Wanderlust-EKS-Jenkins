@@ -61,8 +61,9 @@ WanderLust is a simple MERN travel blog website ✈ This project is aimed to hel
 
 - <b>Create 1 Master machine on AWS with 2CPU, 8GB of RAM (t2.large) and 29 GB of storage and install Docker on it.</b>
 #
-- <b>Open the below ports in security group of master machine and also attach same security group to Jenkins worker node (We will create worker node shortly)</b>
-![image](https://github.com/user-attachments/assets/4e5ecd37-fe2e-4e4b-a6ba-14c7b62715a3)
+- <b>Open the below ports in security group of master machine </b>
+![image](https://github.com/user-attachments/assets/6825cb8d-35b2-40ae-81f3-55c23c9a993e)
+
 
 > [!Note]
 > We are creating this master machine because we will configure Jenkins master, eksctl, EKS cluster creation from here.
