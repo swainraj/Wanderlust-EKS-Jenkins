@@ -151,9 +151,8 @@ sudo apt-get install jenkins -y
   ```
 
   ```
-  - Create an IAM role with <mark>administrator access</mark> attach it to the jenkins Master node <mark>Select Jenkins Master node EC2 instance --> Actions --> Security --> Modify IAM role</mark>
-  
-  ![image](https://github.com/user-attachments/assets/1a9060db-db11-40b7-86f0-47a65e8ed68b)
+- Create an IAM role with <mark>administrator access</mark> attach it to the jenkins Master node <mark>Select Jenkins Master node EC2 instance --> Actions --> Security --> Modify IAM role</mark>
+  ![image](https://github.com/user-attachments/assets/123c7066-13d8-401b-a756-96b7bf59abac)
 
   ```
 #
