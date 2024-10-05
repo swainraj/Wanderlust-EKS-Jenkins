@@ -147,68 +147,19 @@ sudo apt-get install jenkins -y
                        --ssh-access \
                        --ssh-public-key=eks-nodegroup-key 
   ```
-> [!Note]
->  Make sure the ssh-public-key "eks-nodegroup-key is available in your aws account"
-#
-- <b id="Jenkins-worker">Setting up jenkins worker node</b>
-  - Create a new EC2 instance (Jenkins Worker) with 2CPU, 8GB of RAM (t2.large) and 29 GB of storage and install java on it
-  ```bash
-  sudo apt update -y
-  sudo apt install fontconfig openjdk-17-jre -y
+
   ```
-  - Create an IAM role with <mark>administrator access</mark> attach it to the jenkins worker node <mark>Select Jenkins worker node EC2 instance --> Actions --> Security --> Modify IAM role</mark>
+  - Create an IAM role with <mark>administrator access</mark> attach it to the jenkins worker node <mark>Select Jenkins Master node EC2 instance --> Actions --> Security --> Modify IAM role</mark>
   ![image](https://github.com/user-attachments/assets/1a9060db-db11-40b7-86f0-47a65e8ed68b)
 
-  - Configure AWSCLI (<a href="https://github.com/DevMadhup/DevOps-Tools-Installations/blob/main/AWSCLI/AWSCLI.sh">Setup AWSCLI</a>)
-  ```bash
-  sudo su
   ```
-  ```bash
-  curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-  sudo apt install unzip
-  unzip awscliv2.zip
-  sudo ./aws/install
-  aws configure
-  ```
-#
-  - <b>generate ssh keys (Master machine) to setup jenkins master-slave</b>
-  ```bash
-  ssh-keygen
-  ```
-  ![image](https://github.com/user-attachments/assets/0c8ecb74-1bc5-46f9-ad55-1e22e8092198)
-#
-  - <b>Now move to directory where your ssh keys are generated and copy the content of public key and paste to authorized_keys file of the Jenkins worker node.</b>
-#
-  - <b>Now, go to the jenkins master and navigate to <mark>Manage jenkins --> Nodes</mark>, and click on Add node </b>
-    - <b>name:</b> Node
-    - <b>type:</b> permanent agent
-    - <b>Number of executors:</b> 2
-    - Remote root directory
-    - <b>Labels:</b> Node
-    - <b>Usage:</b> Only build jobs with label expressions matching this node
-    - <b>Launch method:</b> Via ssh
-    - <b>Host:</b> \<public-ip-worker-jenkins\>
-    - <b>Credentials:</b> <mark>Add --> Kind: ssh username with private key --> ID: Worker --> Description: Worker --> Username: root --> Private key: Enter directly --> Add Private key</mark>
-    - <b>Host Key Verification Strategy:</b> Non verifying Verification Strategy
-    - <b>Availability:</b> Keep this agent online as much as possible
-#
-  - And your jenkins worker node is added
-  ![image](https://github.com/user-attachments/assets/cab93696-a4e2-4501-b164-8287d7077eef)
-
-# 
-- <b id="docker">Install docker (Jenkins Worker)</b>
-
-```bash
-sudo apt install docker.io -y
-sudo usermod -aG docker ubuntu && newgrp docker
-```
 #
 - <b id="Sonar">Install and configure SonarQube (Master machine)</b>
 ```bash
 docker run -itd --name SonarQube-Server -p 9000:9000 sonarqube:lts-community
 ```
 #
-- <b id="Trivy">Install Trivy (Jenkins Worker)</b>
+- <b id="Trivy">Install Trivy (Jenkins Master)</b>
 ```bash
 sudo apt-get install wget apt-transport-https gnupg lsb-release -y
 wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | sudo apt-key add -
@@ -254,7 +205,7 @@ sudo apt-get install trivy -y
   ![image](https://github.com/user-attachments/assets/a2932e03-ebc7-42a6-9132-82638152197f)
   - <b>Access it on browser, click on advance and proceed with</b>
   ```bash
-  <public-ip-worker>:<port>
+  <public-ip-Master>:<port>
   ```
   ![image](https://github.com/user-attachments/assets/29d9cdbd-5b7c-44b3-bb9b-1d091d042ce3)
   ![image](https://github.com/user-attachments/assets/08f4e047-e21c-4241-ba68-f9b719a4a39a)
@@ -304,10 +255,10 @@ sudo apt-get install trivy -y
   - Docker
   - Pipeline: Stage View
 #
-- <b id="Owasp">Configure OWASP, move to <mark>Manage Jenkins --> Plugins --> Available plugins</mark> (Jenkins Worker)</b>
+- <b id="Owasp">Configure OWASP, move to <mark>Manage Jenkins --> Plugins --> Available plugins</mark> (Jenkins Master)</b>
 ![image](https://github.com/user-attachments/assets/da6a26d3-f742-4ea8-86b7-107b1650a7c2)
 
-- <b id="Sonar">After OWASP plugin is installed, Now move to <mark>Manage jenkins --> Tools</mark> (Jenkins Worker)</b>
+- <b id="Sonar">After OWASP plugin is installed, Now move to <mark>Manage jenkins --> Tools</mark> (Jenkins Master)</b>
 ![image](https://github.com/user-attachments/assets/3b8c3f20-202e-4864-b3b6-b48d7a604ee8)
 #
 - <b>Login to SonarQube server and create the credentials for jenkins to integrate with SonarQube</b>
@@ -354,7 +305,7 @@ sudo apt-get install trivy -y
 ![image](https://github.com/user-attachments/assets/ac79f7e6-c02c-4431-bb3b-5c7489a93a63)
 ![image](https://github.com/user-attachments/assets/46a5937f-e06e-4265-ac0f-42543576a5cd)
 #
-- <b>Provide permission to docker socket so that docker build and push command do not fail (Jenkins Worker)</b>
+- <b>Provide permission to docker socket so that docker build and push command do not fail (Jenkins Master)</b>
 ```bash
 chmod 777 /var/run/docker.sock
 ```
@@ -413,7 +364,7 @@ chmod 777 /var/run/docker.sock
 ![image](https://github.com/user-attachments/assets/1ea9d486-656e-40f1-804d-2651efb54cf6)
 - <b>Open port 31000 and 31100 on worker node and Access it on browser</b>
 ```bash
-<worker-public-ip>:31000
+<Master-public-ip>:31000
 ```
 ![image](https://github.com/user-attachments/assets/a4b2a4b4-e1aa-4b22-ac6b-f40003d0723a)
 ![image](https://github.com/user-attachments/assets/06f9f1c8-094d-4d9f-a9d8-256fb18a9ae4)
