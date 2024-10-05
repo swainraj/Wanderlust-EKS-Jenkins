@@ -75,6 +75,7 @@ sudo apt-get update
 ```
 ```bash
 sudo apt-get install docker.io -y
+sudo chmod 777 /var/run/docker.sock
 sudo usermod -aG docker ubuntu && newgrp docker
 ```
 #
@@ -150,7 +151,8 @@ sudo apt-get install jenkins -y
   ```
 
   ```
-  - Create an IAM role with <mark>administrator access</mark> attach it to the jenkins worker node <mark>Select Jenkins Master node EC2 instance --> Actions --> Security --> Modify IAM role</mark>
+  - Create an IAM role with <mark>administrator access</mark> attach it to the jenkins Master node <mark>Select Jenkins Master node EC2 instance --> Actions --> Security --> Modify IAM role</mark>
+  
   ![image](https://github.com/user-attachments/assets/1a9060db-db11-40b7-86f0-47a65e8ed68b)
 
   ```
