@@ -136,6 +136,8 @@ sudo apt-get install jenkins -y
     --cluster wanderlust \
     --approve
   ```
+- <b>Before creating node group > go to Ec2 section on us-east-2 Region and create a key pair (eks-nodegroup-key) , this key pair will use in future to login on node group </b>
+
   - <b>Create Nodegroup (Master machine)</b>
   ```bash
   eksctl create nodegroup --cluster=wanderlust \
