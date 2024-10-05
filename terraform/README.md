@@ -1,4 +1,4 @@
-                                                         Jenkins Master server setup through Terraform Code
+                                   Jenkins Master server setup through Terraform Code
 
 step -1 : Login to your local Machine > create a dir (mkdir terratest) > cd terratest > ssh-keygen (generate key to login purpose) > name the private key as terra-key 
 step -2 : git clone https://github.com/swainraj/Wanderlust-EKS-Jenkins.git
