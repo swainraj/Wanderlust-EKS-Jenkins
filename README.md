@@ -219,6 +219,10 @@ sudo apt-get install trivy -y
   ```
   - <b>Username: admin</b>
   - <b> Now, go to <mark>User Info</mark> and update your argocd password
+
+# Go to Argho CD > Settings > Connect Repo > Connect
+![image](https://github.com/user-attachments/assets/d7058045-bc2a-4a96-938d-ff9a9deb465b)
+
 #
 ## Steps to add email notification
 - <b id="Mail">Go to your Jenkins Master EC2 instance and allow 465 port number for SMTPS</b>
