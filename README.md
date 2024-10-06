@@ -293,7 +293,7 @@ sudo apt-get install trivy -y
 - <b>Go to <mark> Manage Jenkins --> System</mark> and search for SonarQube installations:</b>
 ![image](https://github.com/user-attachments/assets/ae866185-cb2b-4e83-825b-a125ec97243a)
 #
-- <b>Now again, Go to <mark> Manage Jenkins --> System</mark> and search for Global Trusted Pipeline Libraries:</b
+- <b> We will implement jenkins shared library in this step, to simplfy the jenkins pipeline code. Now again, Go to <mark> Manage Jenkins --> System</mark> and search for Global Trusted Pipeline Libraries:</b
 ![image](https://github.com/user-attachments/assets/874b2e03-49b9-4c26-9b0f-bd07ce70c0f1)
 ![image](https://github.com/user-attachments/assets/1ca83b43-ce85-4970-941d-9a819ce4ecfd)
 #
