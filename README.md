@@ -151,12 +151,10 @@ sudo apt-get install jenkins -y
                        --ssh-access \
                        --ssh-public-key=eks-nodegroup-key 
   ```
-
-  ```
+```
 - Create an IAM role with <mark>administrator access</mark> attach it to the jenkins Master node <mark>Select Jenkins Master node EC2 instance --> Actions --> Security --> Modify IAM role</mark>
   ![image](https://github.com/user-attachments/assets/123c7066-13d8-401b-a756-96b7bf59abac)
-
-  ```
+```￼
 #
 - <b id="Sonar">Install and configure SonarQube (Master machine)</b>
 ```bash
