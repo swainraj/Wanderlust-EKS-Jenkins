@@ -258,6 +258,10 @@ sudo apt-get install trivy -y
   - Docker
   - Pipeline: Stage View
 #
+## Installed these Plugins on Jenkins Master:
+![image](https://github.com/user-attachments/assets/91c315ee-9af7-40f8-9675-f1fca10b1da6)
+
+#
 - <b id="Owasp">Configure OWASP, move to <mark>Manage Jenkins --> Plugins --> Available plugins</mark> (Jenkins Master)</b>
 ![image](https://github.com/user-attachments/assets/da6a26d3-f742-4ea8-86b7-107b1650a7c2)
 
