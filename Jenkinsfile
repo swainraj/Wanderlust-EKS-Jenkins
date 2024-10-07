@@ -44,15 +44,15 @@ pipeline {
                 }
             }
         }
-
-        stage("OWASP: Dependency check"){
-            steps{
-                script{
-                    owasp_dependency()
+        stage("OWASP: Dependency check") {
+            steps {
+                script {
+                    // Ensure the tool matches the one in Jenkins tool configuration
+                    dependencyCheck additionalArguments: '--scan .', odcInstallation: 'OWASP'
                 }
             }
         }
-        
+
         stage("SonarQube: Code Analysis"){
             steps{
                 script{
