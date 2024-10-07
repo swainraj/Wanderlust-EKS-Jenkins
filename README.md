@@ -366,6 +366,8 @@ chmod 777 /var/run/docker.sock
 
 > [!Important]
 > Make sure to click on the <mark>Auto-Create Namespace</mark> option while creating argocd application
+ ![image](https://github.com/user-attachments/assets/044b33ad-87db-4e48-8a1f-fb18912adac6)
+
 
 ![image](https://github.com/user-attachments/assets/55dcd3c2-5424-4efb-9bee-1c12bbf7f158)
 ![image](https://github.com/user-attachments/assets/3e2468ff-8cb2-4bda-a8cc-0742cd6d0cae)
