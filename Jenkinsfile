@@ -32,7 +32,7 @@ pipeline {
         stage('Git: Code Checkout') {
             steps {
                 script{
-                    code_checkout("https://https://github.com/swainraj/Wanderlust-EKS-Jenkins.git","main")
+                    code_checkout("https://github.com/swainraj/Wanderlust-EKS-Jenkins.git","main")
                 }
             }
         }
