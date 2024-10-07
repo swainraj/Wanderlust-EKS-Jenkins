@@ -96,11 +96,13 @@ pipeline {
             steps{
                 script{
                         dir('backend'){
-                            docker_build("wanderlust-backend-beta","${params.BACKEND_DOCKER_TAG}","swainrajesh")
+                             //  swainraj is the dockerhub name
+                            docker_build("wanderlust-backend-beta","${params.BACKEND_DOCKER_TAG}","swainraj")
                         }
                     
                         dir('frontend'){
-                            docker_build("wanderlust-frontend-beta","${params.FRONTEND_DOCKER_TAG}","swainrajesh")
+                            //  swainraj is the dockerhub name
+                            docker_build("wanderlust-frontend-beta","${params.FRONTEND_DOCKER_TAG}","swainraj")
                         }
                 }
             }
@@ -109,6 +111,7 @@ pipeline {
         stage("Docker: Push to DockerHub"){
             steps{
                 script{
+                    //  swainraj is the dockerhub name
                     docker_push("wanderlust-backend-beta","${params.BACKEND_DOCKER_TAG}","swainrajesh") 
                     docker_push("wanderlust-frontend-beta","${params.FRONTEND_DOCKER_TAG}","swainrajesh")
                 }
