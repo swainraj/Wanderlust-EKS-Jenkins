@@ -466,7 +466,13 @@ kubectl edit svc stable-grafana -n prometheus
 ```bash
 kubectl get svc -n prometheus
 ```
+- ![image](https://github.com/user-attachments/assets/9b7247b5-492a-4480-bc3c-342c8bcfffc0)
 
+#
+- To view the Dashboard of Grafana and prometheous, use Jenkins-Mater-Pubip:prometheous-pod-node-port (to see prometheous dashboard)  & Jenkins-Mater-Pubip:grafana-pod-node-port (to see grafana dashboard)
+  
+#
+- Now, view the Dashboard in Grafana
 #
 - Get a password for grafana
 ```bash
@@ -474,6 +480,7 @@ kubectl get secret --namespace prometheus stable-grafana -o jsonpath="{.data.adm
 ```
 > [!Note]
 > Username: admin
+![image](https://github.com/user-attachments/assets/43a51517-5cb6-4524-8bcc-592449ff865a)
 
 #
 - Now, view the Dashboard in Grafana
